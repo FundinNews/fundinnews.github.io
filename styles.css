@@ -7,9 +7,9 @@ body {
 
 .logo {
     width: 100px; 
-    height: 100px; 
-    display: block; 
-    text-indent: -9999px;
+    height: 100px;
+    margin-top: 10px;
+    margin-left: 20px;
 }
 
 header {
