@@ -5,6 +5,12 @@ body {
     background-color: #f2f2f2;
 }
 
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .logo {
     width: 100px; 
     height: 100px;
