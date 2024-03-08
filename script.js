@@ -1,64 +1,45 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const cells = document.querySelectorAll(".cell");
-    const resultScreen = document.getElementById("result-screen");
-    const resultMessage = document.getElementById("result-message");
-    const newGameButton = document.getElementById("new-game-button");
+// Sample news data
+const newsData = [
+    {
+        title: 'Breaking News: Exciting Event Happening!',
+        date: 'Published on March 3, 2024',
+        content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac nulla vel libero efficitur efficitur. Morbi commodo, nunc et euismod elementum, purus justo scelerisque orci, eu lacinia justo mi non odio.'
+    },
+    {
+        title: 'New Technological Advancements Unveiled',
+        date: 'Published on March 2, 2024',
+        content: 'Integer nec arcu vel risus ullamcorper ullamcorper. Fusce et justo vel velit tincidunt tristique a id ligula. Proin vitae scelerisque quam.'
+    }
+    // Add more news articles as needed
+];
 
-    let currentPlayer = "X";
-    let gameBoard = ["", "", "", "", "", "", "", "", ""];
+// Function to generate news articles dynamically
+function generateNewsArticles() {
+    const newsContainer = document.getElementById('newsContainer');
 
-    cells.forEach(cell => {
-        cell.addEventListener("click", () => handleCellClick(cell));
+    newsData.forEach(news => {
+        const articleDiv = document.createElement('div');
+        articleDiv.classList.add('news-article');
+
+        const titleElement = document.createElement('h2');
+        titleElement.classList.add('news-title');
+        titleElement.textContent = news.title;
+
+        const dateElement = document.createElement('p');
+        dateElement.classList.add('news-date');
+        dateElement.textContent = news.date;
+
+        const contentElement = document.createElement('p');
+        contentElement.classList.add('news-content');
+        contentElement.textContent = news.content;
+
+        articleDiv.appendChild(titleElement);
+        articleDiv.appendChild(dateElement);
+        articleDiv.appendChild(contentElement);
+
+        newsContainer.appendChild(articleDiv);
     });
-
-    newGameButton.addEventListener("click", resetGame);
-
-    function handleCellClick(cell) {
-        const cellIndex = parseInt(cell.id) - 1;
-
-        if (gameBoard[cellIndex] === "" && !checkWinner()) {
-            gameBoard[cellIndex] = currentPlayer;
-            cell.textContent = currentPlayer;
-            cell.style.pointerEvents = "none";
-
-            if (checkWinner()) {
-                displayResult(`Player ${currentPlayer} wins!`);
-            } else if (gameBoard.every(cell => cell !== "")) {
-                displayResult("It's a tie!");
-            } else {
-                currentPlayer = currentPlayer === "X" ? "O" : "X";
-            }
-        }
-    }
-
-    function checkWinner() {
-        const winningCombinations = [
-            [0, 1, 2], [3, 4, 5], [6, 7, 8], // Rows
-            [0, 3, 6], [1, 4, 7], [2, 5, 8], // Columns
-            [0, 4, 8], [2, 4, 6]             // Diagonals
-        ];
-
-        return winningCombinations.some(combination => {
-            const [a, b, c] = combination;
-            return gameBoard[a] !== "" && gameBoard[a] === gameBoard[b] && gameBoard[a] === gameBoard[c];
-        });
-    }
-
-   function displayResult(message) {
-    resultMessage.textContent = message;
-    resultScreen.classList.add("visible"); // Add this line to make the result screen visible
 }
 
-function resetGame() {
-    gameBoard = ["", "", "", "", "", "", "", "", ""];
-    cells.forEach(cell => {
-        cell.textContent = "";
-        cell.style.pointerEvents = "auto";
-    });
-
-    resultScreen.classList.remove("visible"); // Add this line to hide the result screen
-    currentPlayer = "X";
-}
-
-
-});
+// Call the function to generate news articles
+generateNewsArticles();
