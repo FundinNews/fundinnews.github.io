@@ -1,0 +1,73 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    background: linear-gradient(to bottom right, #3498db, #2ecc71);
+    font-family: 'Helvetica Neue', Arial, sans-serif; /* Change the font-family as needed */
+}
+
+
+/* ... (other styles) ... */
+
+
+#game-container {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(3, 100px);
+    gap: 5px;
+}
+
+.cell {
+    width: 100px;
+    height: 100px;
+    background-color: #eee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    cursor: pointer;
+    border-radius: 10px; /* Add this line to make the edges rounder */
+}
+
+.cell:hover {
+    background-color: #ddd;
+}
+
+
+#result-screen {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    font-family: 'Helvetica Neue', Arial, sans-serif; /* Change the font-family as needed */
+}
+
+#result-screen.visible {
+    display: block;
+}
+
+#result-message {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+#new-game-button {
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#new-game-button:hover {
+    background-color: #2980b9;
+}
