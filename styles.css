@@ -5,6 +5,12 @@ body {
     background-color: #f2f2f2;
 }
 
+.logo {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px; /* Adjust as needed */
+}
+
 header {
     background-color: #333;
     color: #fff;
