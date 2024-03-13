@@ -11,7 +11,7 @@ header {
     color: #fff;
     padding: 15px;
     text-align: center;
-     max-width: 800px; /* Set maximum width for the header */
+    height: 200px;
     margin: 0 auto; /* Center the header horizontally */
 }
 
